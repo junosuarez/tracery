@@ -1,7 +1,7 @@
 var tracery = require('../index')
 var should = require('chai').should()
 
-describe('sample', function () {
+describe('example:', function () {
   it('can nest tracery objects', function () {
 
     var Document = tracery({

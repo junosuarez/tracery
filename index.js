@@ -1,6 +1,10 @@
 var connective = require('connective')
 
 function tracery (structure) {
+  if (Array.isArray(structure)) {
+    return is(structure)
+  }
+
   return function (obj) {
     for (var key in structure) {
       var type = structure[key]
@@ -38,7 +42,14 @@ function K(val) {
   return function () { return val }
 }
 
+function all(predicate) {
+  return function (arr) {
+    return arr.every(predicate)
+  }
+}
+
 function is (predicate) {
+  console.log(predicate)
 
   if (predicate === Function) return isFunction
   if (predicate === Boolean) return isBoolean
@@ -50,6 +61,7 @@ function is (predicate) {
   if (predicate instanceof RegExp) return isRegExMatch(predicate)
   if (isFunction(predicate)) return predicate
   if (isNull(predicate)) return K(false)
+  if (Array.isArray(predicate)) { console.log(predicate); return all(is(predicate[0])) }
   if (isObject(predicate)) return tracery(predicate)
 
   return K(false)
@@ -63,10 +75,15 @@ function Nullable (x) {
   return connective.or(is(x), isNull)
 }
 
+function Vector (x) {
+
+}
+
 module.exports = tracery
 module.exports.Collection = require('./collection')
 module.exports.Optional = Optional
 module.exports.Nullable = Nullable
+module.exports.Vector = Vector
 
 module.exports.is = is
 module.exports.isTypeof = isTypeof

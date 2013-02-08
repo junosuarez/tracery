@@ -111,4 +111,14 @@ describe('tracery', function () {
 
   })
 
+  it('supports asserting typed arrays', function () {
+    console.log('x')
+    var isArrOfStrs = tracery([String])
+    var t = ['a', 'b', 'c']
+    var f = ['a', 'b', 3]
+console.log('yu')
+    isArrOfStrs(t).should.equal(true)
+    isArrOfStrs(f).should.equal(false)
+  })
+
 })
