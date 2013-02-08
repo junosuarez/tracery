@@ -3,7 +3,8 @@ var connective = require('connective')
 function tracery (structure) {
   return function (obj) {
     for (var key in structure) {
-      var test = is(structure[key])
+      var type = structure[key]
+      var test = is(type)
       var prop = obj[key]
       if (!test(prop)) {
         return false
@@ -20,7 +21,9 @@ function isTypeof(type) {
 }
 
 function isRegExMatch(regex) {
-  return connective.and(isString, regex.test)
+  return function (str) {
+    return isString(str) && regex.test(str)
+  }
 }
 
 var isFunction = isTypeof('function')
@@ -45,7 +48,11 @@ function is (predicate) {
   if (predicate === Array) return Array.isArray
 
   if (predicate instanceof RegExp) return isRegExMatch(predicate)
-  return isFunction(predicate) ? predicate : K(false)
+  if (isFunction(predicate)) return predicate
+  if (isNull(predicate)) return K(false)
+  if (isObject(predicate)) return tracery(predicate)
+
+  return K(false)
 }
 
 function Optional (x) {

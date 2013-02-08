@@ -37,11 +37,22 @@ describe('tracery', function () {
       c: 12
     }
 
-    p(obj).should.equal(false)
+    p(obj2).should.equal(false)
   })
 
   it('can match properties by predicate', function () {
-    var isUpperCase = /^[A-Z]*$/.test
+    var minLength10 = function (x) { return x.length >= 10 }
+    var p = tracery({
+      username: minLength10
+    })
+
+    p({username: '23423423423423423423'}).should.equal(true)
+
+    p({username: '2342'}).should.equal(false)
+  })
+
+  it('can match properties by regex', function () {
+    var isUpperCase = /^[A-Z]*$/
     var p = tracery({
       b: isUpperCase
     })
@@ -54,6 +65,49 @@ describe('tracery', function () {
     p({
       b: 'Bar'
     }).should.equal(false)
+
+  })
+
+  it('supports deep object literal structure definitions', function () {
+    var p = tracery({
+      name: {
+        first: String,
+        last: String
+      },
+      emails: {
+        work: String,
+        home: String,
+        school: String
+      }
+    })
+
+    var user = {
+      name: {
+        first: 'Betty',
+        last: 'Dodson'
+      },
+      emails: {
+        work: 'b.dodson@megacorp.com',
+        home: 'butterflychica947@lol.com',
+        school: 'bdodso4@stateu.edu'
+      }
+    }
+
+    p(user).should.equal(true)
+
+
+    var user2 = {
+      name: {
+        firstName: 'Betty',
+        lastName: 'Dodson'
+      },
+      emails: {
+        work: 'b.dodson@megacorp.com',
+        school: 'bdodso4@stateu.edu'
+      }
+    }
+
+    p(user2).should.equal(false)
 
   })
 
