@@ -1,7 +1,15 @@
 {
   "name": "tracery",
-  "version": "0.0.0",
-  "description": "object structure predicate builder",
+  "version": "0.4.0",
+  "description": "an object structure predicate builder (make functions to test an object's structure)",
+  "keywords": [
+    "structure",
+    "schema",
+    "test",
+    "document",
+    "validation",
+    "data"
+  ],
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -9,8 +17,12 @@
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:AgileDiagnosis/tracery.git"
+  },
   "author": "Agile Diagnosis <hello@agilediagnosis.com>",
+  "contributors": ["jden <jason@denizac.org>"],
   "license": "MIT",
   "devDependencies": {
     "chai-interface": "~1.0.1",
