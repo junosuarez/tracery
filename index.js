@@ -65,16 +65,26 @@ function is (predicate) {
   return K(false)
 }
 
-function Optional (x) {
-  return connective.or(is(x), isUndefined)
+function Optional (type) {
+  return connective.or(is(type), isUndefined)
 }
 
-function Nullable (x) {
-  return connective.or(is(x), isNull)
+function Nullable (type) {
+  return connective.or(is(type), isNull)
 }
 
-function Vector (x) {
-
+function Vector (structure) {
+  var predicates = structure.map(is)
+  var len = structure.length;
+  return function (arr) {
+    if (!Array.isArray(arr)) return false
+    if (arr.length !== len) return false
+    for(var i = 0; i < len; i++) {
+      var ele = arr[i]
+      if (!predicates[i](ele)) return false
+    }
+    return true
+  }
 }
 
 module.exports = tracery
