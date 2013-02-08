@@ -4,12 +4,6 @@ var should = require('chai').should()
 describe('example:', function () {
   it('can nest tracery objects', function () {
 
-    var Document = tracery({
-      id: String,
-      movies: [Movie],
-      flavors: tracery.Collection(Flavor)
-    })
-
     var Tags = tracery([String])
 
     var Movie = tracery({
@@ -24,8 +18,13 @@ describe('example:', function () {
       sour: Boolean,
       bitter: Boolean,
       sweet: Boolean,
-      spicy: Boolean,
-      salty: Boolean
+      spicy: Boolean
+    })
+
+    var Document = tracery({
+      id: String,
+      movies: [Movie],
+      flavors: tracery.Collection(Flavor)
     })
 
     var goodDoc = {

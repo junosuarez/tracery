@@ -49,8 +49,6 @@ function all(predicate) {
 }
 
 function is (predicate) {
-  console.log(predicate)
-
   if (predicate === Function) return isFunction
   if (predicate === Boolean) return isBoolean
   if (predicate === Object) return isObject
@@ -61,7 +59,7 @@ function is (predicate) {
   if (predicate instanceof RegExp) return isRegExMatch(predicate)
   if (isFunction(predicate)) return predicate
   if (isNull(predicate)) return K(false)
-  if (Array.isArray(predicate)) { console.log(predicate); return all(is(predicate[0])) }
+  if (Array.isArray(predicate)) return all(is(predicate[0]))
   if (isObject(predicate)) return tracery(predicate)
 
   return K(false)
