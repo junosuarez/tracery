@@ -161,6 +161,14 @@ Arrays with an expected structure are sometimes used for memory or performance r
 ````
 See `test/example.js` for more.
 
+## bonus: type diffing
+
+You can `require('tracery/diff')` to generate objects diffing betweed expected and actual object structures. If there is no difference, it returns false, otherwise it returns an object structure similar to the object under test, with leaves of `{actual: type, expected: type, actualValue: value}`.
+
+This module is included in the package, but is not loaded by default. It is useful for debugging and for unit tests.
+
+See `test/test.diff` for a readable example.
+
 ## installation
 
     $ npm install tracery
