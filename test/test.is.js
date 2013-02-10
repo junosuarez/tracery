@@ -1,17 +1,8 @@
 var chai = require('chai')
 chai.should()
 
-describe('tracery.isTypeof', function() {
-  var isTypeof = require('../index').isTypeof
-  it('builds a predicate testing typeof its argument', function () {
-    var isStr = isTypeof('string')
-    isStr('foo').should.equal(true)
-    isStr(234).should.equal(false)
-  })
-})
-
-describe('tracery.is', function () {
-  var is = require('../index').is
+describe('tracery/is', function () {
+  var is = require('../is')
 
   it('returns a RegEx test function which can be called on any value if called with a RegEx', function () {
     var fn = is(/foo/)
@@ -97,6 +88,98 @@ describe('tracery.is', function () {
       isFn('not a function').should.equal(false)
     })
 
+    it('Date', function () {
+      var isDate = is(Date)
+
+      isDate(new Date).should.equal(true)
+      isDate().should.equal(false)
+      isDate(123).should.equal(false)
+    })
+    it('RegExp', function () {
+      var test = is(RegExp)
+
+      test(/sdsf/).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+
+    it('DataView', function () {
+      var p = is(DataView)
+
+      p(new DataView(new ArrayBuffer(16))).should.equal(true)
+      p().should.equal(false)
+      p(123).should.equal(false)
+    })
+    it('ArrayBuffer', function () {
+      var test = is(ArrayBuffer)
+
+      test(new ArrayBuffer(16)).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+    it('Float32Array', function () {
+      var test = is(Float32Array)
+
+      test(new Float32Array()).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+    it('Float32Array', function () {
+      var test = is(Float32Array)
+
+      test(new Float32Array()).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+    it('Float64Array', function () {
+      var test = is(Float64Array)
+
+      test(new Float64Array()).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+    it('Int8Array', function () {
+      var test = is(Int8Array)
+
+      test(new Int8Array()).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+    it('Int16Array', function () {
+      var test = is(Int16Array)
+
+      test(new Int16Array()).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+    it('In32Array', function () {
+      var test = is(Int32Array)
+
+      test(new Int32Array()).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+    it('Uint8Array', function () {
+      var test = is(Uint8Array)
+
+      test(new Uint8Array()).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+    it('Uint16Array', function () {
+      var test = is(Uint16Array)
+
+      test(new Uint16Array()).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
+    it('Uint32Array', function () {
+      var test = is(Uint32Array)
+
+      test(new Uint32Array()).should.equal(true)
+      test().should.equal(false)
+      test(123).should.equal(false)
+    })
   })
 
 

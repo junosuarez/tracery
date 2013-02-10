@@ -22,7 +22,9 @@
     "url": "git@github.com:AgileDiagnosis/tracery.git"
   },
   "author": "Agile Diagnosis <hello@agilediagnosis.com>",
-  "contributors": ["jden <jason@denizac.org>"],
+  "contributors": [
+    "jden <jason@denizac.org>"
+  ],
   "license": "MIT",
   "devDependencies": {
     "chai-interface": "~1.0.1",
@@ -30,6 +32,7 @@
     "mocha": "~1.8.1"
   },
   "dependencies": {
-    "connective": "~1.0.0"
+    "connective": "~1.0.0",
+    "ski": "~1.0.0"
   }
 }

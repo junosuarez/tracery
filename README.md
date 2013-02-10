@@ -125,6 +125,26 @@ Empty arrays will match, but sparse arrays will not. In the case that you really
     })
 ```
 
+### no no, I meant builtin type arrays
+oh! Well that's great: we support the following builtin types:
+
+```js
+    tracery({
+      a: ArrayBuffer,
+      b: DataView,
+      c: Float32Array,
+      d: Float64Array,
+      e: Int8Array,
+      f: Int16Array,
+      g: Int32Array,
+      h: Uint8Array,
+      i: Uint16Array,
+      j: Uint32Array,
+      k: Date,
+      l: RegExp
+    })
+```
+
 ### typed vectors (tuples)
 
 Arrays with an expected structure are sometimes used for memory or performance reasons to reprent vectors or tuples. For example, a Cartesian coordinate (10, 20) could be represented as an object as `{x: 10, y: 20}` or as `[10, 20]`. We can specify vectors, which must match in terms of number of elements and type of element at each position, using `tracery.Vector`:
@@ -149,6 +169,10 @@ See `test/example.js` for more.
 
     $ npm install
     $ npm test
+
+## changelog
+0.5.0 - add support for builtin typed arrays, Date, and RegExp objects in type signatures
+0.4.0 - intial public release
 
 ## contributors
 
