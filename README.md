@@ -66,7 +66,7 @@ Using higher order functions (for example, with [connective](https://github.com/
     }))
 ```
 
-### optional and nullable types
+### `Optional` and `Nullable` types
 
 Let's say not every employee has a supervisor. `tracery` has builtin helpers `tracery.Optional` (which can be the value or `undefined`) and `tracery.Nullable` (which can be the value or `null`):
 
@@ -84,7 +84,7 @@ Let's say not every employee has a supervisor. `tracery` has builtin helpers `tr
     // -> true
 ```
 
-### collections
+### `Collection`s
 
 Sometimes documents have variable property names, but you'd still like to check that the property values have a specific structure (for example, when using an object as a dictionary or hash table). We can use `tracery.Collection`:
 
@@ -145,7 +145,7 @@ oh! Well that's great: we support the following builtin types:
     })
 ```
 
-### typed vectors (tuples)
+### `Vector` typed vectors (tuples)
 
 Arrays with an expected structure are sometimes used for memory or performance reasons to reprent vectors or tuples. For example, a Cartesian coordinate (10, 20) could be represented as an object as `{x: 10, y: 20}` or as `[10, 20]`. We can specify vectors, which must match in terms of number of elements and type of element at each position, using `tracery.Vector`:
 
@@ -159,6 +159,22 @@ Arrays with an expected structure are sometimes used for memory or performance r
       radius: Number
     })
 ````
+
+### InstanceOf
+
+There's a shortcut for making a predicate to assert `instanceof`:
+
+```js
+    var Foo = function () {}
+
+    var foo = new Foo()
+
+    var isFoo = tracery.InstanceOf(Foo)
+
+    isFoo(foo)
+    // => true
+```
+
 See `test/example.js` for more.
 
 ## bonus: type diffing

@@ -41,9 +41,15 @@ function Vector (structure) {
   }
 }
 
+function InstanceOf (constructor) {
+  return function (x) {
+    return x instanceof constructor;
+  }
+}
+
 module.exports = tracery
 module.exports.Collection = require('./collection')
 module.exports.Optional = Optional
 module.exports.Nullable = Nullable
 module.exports.Vector = Vector
-
+module.exports.InstanceOf = InstanceOf
