@@ -121,4 +121,9 @@ describe('tracery', function () {
     isArrOfStrs(f).should.equal(false)
   })
 
+  it('should return false if a property is null or undefined', function () {
+    tracery({a: Boolean})().should.equal(false)
+    tracery({a: Boolean})(null).should.equal(false)
+  })
+
 })

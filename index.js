@@ -7,6 +7,9 @@ function tracery (structure) {
   }
 
   return function (obj) {
+    if(obj === undefined || obj === null){
+      return false
+    }
     for (var key in structure) {
       var type = structure[key]
       var test = is(type) || tracery(type)
