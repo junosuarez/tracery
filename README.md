@@ -201,9 +201,10 @@ See `test/test.diff` for a readable example.
 ## contributors
 
 jden <jason@denizac.org>
+Zalastax <kpierre@outlook.com>
 
 please submit pull requests or issues
 
 ## license
 
-MIT (c) 2013 Agile Diagnosis. See LICENSE.md
+MIT (c) 2015 Jason Denizac. See LICENSE.md
