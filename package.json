@@ -1,6 +1,6 @@
 {
   "name": "tracery",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "an object structure predicate builder (make functions to test an object's structure)",
   "keywords": [
     "structure",
@@ -15,7 +15,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha"
+    "test": "node node_modules/mocha/bin/mocha",
+    "prepublish": "npm run browserify",
+    "browserify": "node_modules/.bin/browserify index.js -o ./dist/tracery.js -s tracery && node_modules/.bin/browserify diff.js -o ./dist/diff.js -s tracery-diff"
   },
   "repository": {
     "type": "git",
@@ -27,8 +29,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "chai-interface": "~1.0.1",
+    "browserify": "^10.0.0",
     "chai": "~1.5.0",
+    "chai-interface": "~1.0.1",
     "mocha": "~1.8.1"
   },
   "dependencies": {

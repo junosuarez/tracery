@@ -194,6 +194,10 @@ See `test/test.diff` for a readable example.
     $ npm install
     $ npm test
 
+## building for the browser (UMD)
+
+    $ npm run browserify
+
 ## changelog
 0.5.0 - add support for builtin typed arrays, Date, and RegExp objects in type signatures
 0.4.0 - intial public release
