@@ -120,6 +120,8 @@ Sometimes documents have variable property names, but you'd still like to check 
     // => true
 ```
 
+A Collection assumes keys are strings (like JavaScript objects).
+
 ### typed arrays
 
 We can specify that a property should be an array with any number of elements, all of a given type like so:
