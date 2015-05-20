@@ -17,7 +17,8 @@ describe('tracery', function () {
       c: Boolean,
       d: Function,
       e: Object,
-      f: Array
+      f: Array,
+      g: null
     })
 
     var obj = {
@@ -26,7 +27,8 @@ describe('tracery', function () {
       c: true,
       d: function () {},
       e: {},
-      f: []
+      f: [],
+      g: null
     }
 
     p(obj).should.equal(true)
@@ -34,10 +36,24 @@ describe('tracery', function () {
     var obj2 = {
       a: false,
       b: obj2,
-      c: 12
+      c: 12,
+      d: 1,
+      e: null
     }
 
     p(obj2).should.equal(false)
+  })
+
+  it('takes null as a type and a value', function () {
+
+    tracery({a: null})({a: undefined})
+      .should.equal(false)
+
+    tracery({a: null})({a: {}})
+      .should.equal(false)
+    
+    tracery({a: null})({a: null})
+      .should.equal(true)
   })
 
   it('can match properties by predicate', function () {

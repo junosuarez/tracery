@@ -27,8 +27,11 @@ function diff(Interface, doc) {
 }
 
 function toString(type) {
-  var t = typeof type;
 
+  // null
+  if (is.Null(type)) { return 'Null' }
+
+  var t = typeof type;
   // builtin functions and custom pattern predicates
   if (t === 'function') {
     return type.name || 'Custom Function'

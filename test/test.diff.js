@@ -18,7 +18,9 @@ describe('tracery/diff', function () {
       },
       e: OK,
       f: [String],
-      g: [Number]
+      g: [Number],
+      h: null,
+      i: null
     }
 
     var doc = {
@@ -29,7 +31,9 @@ describe('tracery/diff', function () {
       },
       e: 'foo',
       f: [1,2,3],
-      g: [1, 'two']
+      g: [1, 'two'],
+      h: null,
+      i: undefined
     }
 
     var expectedDiff = {
@@ -64,6 +68,11 @@ describe('tracery/diff', function () {
         actual: 'Array',
         expected: 'Array<Number>',
         actualValue: [1, 'two']
+      },
+      i: {
+        actual: 'Undefined',
+        expected: 'Null',
+        actualValue: undefined
       }
     }
 

@@ -31,6 +31,16 @@ describe('tracery/is', function () {
 
   describe('builds predicates matching typeof from builtins', function () {
 
+    it('null', function () {
+      var isNull = is(null)
+
+      isNull(null).should.equal(true)
+      isNull(undefined).should.equal(false)
+      isNull(false).should.equal(false)
+      isNull(0).should.equal(false)
+      isNull('').should.equal(false)
+    })
+
     it('Boolean', function () {
       var isBool = is(Boolean)
 

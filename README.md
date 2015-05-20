@@ -81,7 +81,20 @@ Let's say not every employee has a supervisor. `tracery` has builtin helpers `tr
       salary: 10,
       reportsTo: null
     })
-    // -> true
+    // => true
+```
+
+Sometimes, you want to assert that an object property is exactly the value `null`. The `null` builtin type matches exactly the value `null`:
+
+```js
+var Empty = tracery({
+  value: null
+})
+
+Empty({
+  value: null
+})
+// => true
 ```
 
 ### `Collection`s

@@ -73,7 +73,7 @@ function is (predicate) {
 
   if (predicate instanceof RegExp) return is.RegExMatch(predicate)
   if (is.Function(predicate)) return predicate
-  if (is.Null(predicate)) return K(false)
+  if (is.Null(predicate)) return is.Null
   if (Array.isArray(predicate)) return all(is(predicate[0]))
 
   // object literal, fallback to tracery

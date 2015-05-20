@@ -27,8 +27,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "chai": "^2.3.0",
     "chai-interface": "~1.0.1",
-    "chai": "~1.5.0",
     "mocha": "~1.8.1"
   },
   "dependencies": {
