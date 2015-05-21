@@ -8,14 +8,22 @@ function diff(Interface, doc) {
   for (var prop in Interface) {
     var actual = doc[prop]
     var expected = Interface[prop]
-
-    var test = is(actual)
+    var test = is(expected)
     if (!test) {
-      // it's an object, recurse
-      var dd = diff(expected, actual)
-      if (dd) {
-        d[prop] = dd
+      // expecting an object
+
+      if (!actual) {
+        // and it's mising
+        d[prop] = {actual: toString(actual), expected: toString(expected), actualValue: actual}
+      } else {
+        // it's an object, recurse      
+        var dd = diff(expected, actual)
+        if (dd) {
+          same = false
+          d[prop] = dd
+        }
       }
+
     } else if (!is(expected)(actual)) {
       same = false
       d[prop] = {actual: toString(actual), expected: toString(expected), actualValue: actual}

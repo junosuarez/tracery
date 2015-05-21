@@ -14,7 +14,11 @@ describe('tracery/diff', function () {
       c: RegExp,
       d: {
         q: Number,
-        w: Date
+        w: Date,
+        x: {
+          A: Number,
+          B: null
+        }
       },
       e: OK,
       f: [String],
@@ -51,6 +55,11 @@ describe('tracery/diff', function () {
         q: {
           actual: 'Undefined',
           expected: 'Number',
+          actualValue: undefined
+        },
+        x: {
+          actual: 'Undefined',
+          expected: "object Object",
           actualValue: undefined
         }
       },
