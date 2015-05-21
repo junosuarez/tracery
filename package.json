@@ -1,6 +1,6 @@
 {
   "name": "tracery",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "an object structure predicate builder (make functions to test an object's structure)",
   "keywords": [
     "structure",
