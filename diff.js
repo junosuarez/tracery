@@ -14,6 +14,7 @@ function diff(Interface, doc) {
 
       if (!actual) {
         // and it's mising
+        same = false
         d[prop] = {actual: toString(actual), expected: toString(expected), actualValue: actual}
       } else {
         // it's an object, recurse      
