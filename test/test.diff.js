@@ -65,7 +65,7 @@ describe('tracery/diff', function () {
       },
       e: {
         actual: 'String',
-        expected: 'Custom Function',
+        expected: 'OK',
         actualValue: 'foo'
       },
       f: {
