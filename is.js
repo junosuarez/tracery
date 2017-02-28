@@ -5,7 +5,7 @@ var K = require('ski/k')
 
 function all(predicate) {
   return function (arr) {
-    return arr.every(predicate)
+    return arr !== undefined && arr.every(predicate)
   }
 }
 

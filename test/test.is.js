@@ -17,6 +17,7 @@ describe('tracery/is', function () {
     is('foo')().should.equal(false)
     is(12)().should.equal(false)
     is(/huh?/)().should.equal(false)
+	is([])().should.equal(false)
   })
 
   it('passes predicates straight through if called on a function', function () {
